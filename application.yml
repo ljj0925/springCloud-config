@@ -1,18 +1,36 @@
-﻿spring:
-    profiles:
-      active:
-       - dev:
-
----
 spring:
-    profiles: dev   #开发环境
-    application:
-        name: springCloud-config-dev
-
+  profiles:
+    active:
+    - dev
 ---
-spring:
-    profiles: test  #测试环境
-    application:
-        name: springCloud-config-test
+server:
+  port: 8800
 
-#请保存为UTF-8格式
+spring:
+  profiles: dev #开发环境
+  application:
+    name: cloud-zull-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+---
+server:
+  port: 8800
+
+spring:
+  profiles: test #测试环境
+  application:
+    name: cloud-zull-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:admin@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
