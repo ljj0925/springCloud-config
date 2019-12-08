@@ -9,7 +9,7 @@ server:
 spring:
   profiles: dev #开发环境
   application:
-    name: cloud-zull-gateway
+    name: cloud-dev
 
 eureka:
   client:
@@ -20,12 +20,12 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
 ---
 server:
-  port: 8800
+  port: 8900
 
 spring:
   profiles: test #测试环境
   application:
-    name: cloud-zull-gateway
+    name: cloud-test
 
 eureka:
   client:
